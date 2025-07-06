@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    overflow: hidden; /* Prevent body scroll, use flex for panels */
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    background-color: #282a36; /* Dracula background */
+    color: #f8f8f2; /* Dracula foreground */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.controls {
+    padding: 10px;
+    background-color: #1e1f29; /* Darker background */
+    display: flex;
+    align-items: center;
+}
+
+.controls button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #bd93f9; /* Purple */
+    color: #282a36;
+    border: none;
+    border-radius: 3px;
+}
+
+.editor-panel {
+    display: flex;
+    flex: 1; /* Takes available space */
+    overflow: hidden; /* Prevent horizontal scroll in panel */
+    border-bottom: 2px solid #6272a4; /* Comment color border */
+}
+
+.editor-container {
+    flex: 1; /* Each editor takes equal width */
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #44475a; /* Selection color border */
+    overflow: hidden; /* Crucial for CodeMirror flex layout */
+}
+
+.editor-container:last-child {
+    border-right: none;
+}
+
+.editor-label {
+    padding: 5px 10px;
+    background-color: #44475a; /* Selection color */
+    font-weight: bold;
+    font-size: 0.9em;
+    flex-shrink: 0; /* Don't shrink label */
+}
+
+/* Style the CodeMirror container */
+.CodeMirror {
+    flex: 1; /* CodeMirror takes available space */
+    height: 100%; /* Make sure CodeMirror fills the container */
+    font-size: 14px;
+}
+
+textarea {
+    display: none; /* Hide the original textarea after CodeMirror initializes */
+}
+
+.output-panel {
+    display: flex;
+    flex: 1; /* Takes available space */
+    overflow: hidden;
+}
+
+.preview-container,
+.console-container {
+    flex: 1; /* Each output takes equal width */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.preview-container {
+    border-right: 1px solid #44475a; /* Selection color border */
+}
+
+.output-label {
+    padding: 5px 10px;
+    background-color: #44475a; /* Selection color */
+    font-weight: bold;
+    font-size: 0.9em;
+    flex-shrink: 0; /* Don't shrink label */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.output-label button {
+     padding: 3px 8px;
+     font-size: 0.8em;
+     background-color: #ff79c6; /* Pink */
+     color: #282a36;
+     border: none;
+     border-radius: 3px;
+     cursor: pointer;
+}
+
+#preview-iframe {
+    flex: 1; /* iframe takes available space */
+    width: 100%;
+    border: none;
+    background-color: white; /* Default background */
+}
+
+.console-output {
+    flex: 1; /* Console takes available space */
+    padding: 10px;
+    background-color: #282a36; /* Dracula background */
+    overflow-y: auto; /* Scroll for console content */
+    white-space: pre-wrap; /* Preserve whitespace and wrap */
+    word-break: break-all; /* Break long words */
+}
+
+.console-output div {
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted #44475a;
+}
+
+.console-output div:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.console-log { color: #f8f8f2; /* White */ }
+.console-warn { color: #f1fa8c; /* Yellow */ }
+.console-error { color: #ff5555; /* Red */ }
+.console-info { color: #8be9fd; /* Cyan */ } /* Add info style */
+.console-debug { color: #bd93f9; /* Purple */ } /* Add debug style */
